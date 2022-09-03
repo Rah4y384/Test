@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <title>Clock</title>
+
+    <style>
+
+        body{
+            background-color: rgb(143, 143, 255);
+            text-align: center;
+        }
+        h1{
+            color: rgba(169, 77, 255, 0.863);
+        }
+        #clock{
+            color: rgb(180, 205, 253);
+            transition: all  4s cubic-bezier(.17,.67,.83,.67) ;
+            background-image:linear-gradient(rgb(124, 124, 255),rgb(185, 111, 255));
+            margin-top: 75px;
+        }
+
+        #clock:hover{
+    transform: scale(5);
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1 >Digital Clock</h1>
+
+    <div id="clock"></div>
+
+    <script>
+        function clock(){
+            let time = new Date()
+        let hour = time.getHours()
+        let min = time.getMinutes()
+        let sec = time.getSeconds()
+        let milsec = time.getMilliseconds()
+        let apm = "AM"
+        let year = time.getFullYear()
+        let month = time.getMonth() +1
+        let date = time.getDate()
+
+        if(hour>12)
+        {
+            hour = hour - 12
+
+            apm = "PM"
+        }
+
+        else
+{
+
+   apm = "AM"
+
+}
+if (hour<10)
+{
+    hour = "0" + hour
+}
+if (min<10)
+{
+    min = "0" + min
+}if (sec<10)
+{
+    sec = "0" + sec
+}
+if (milsec<10)
+{
+    milsec = "00" + milsec
+}
+if (date<10)
+{
+    date = "0" + date
+}if (month<10)
+{
+    month = "0" + month
+}
+        document.querySelector("#clock").innerHTML = hour + ":" + min + ":" + sec + ":" + milsec + " " + apm + "<br>" + date + "/" + month + "/" + year;
+       
+        }
+        setInterval(clock,1)
+        // if hour over 12  reset
+
+      
+    </script>
+</body>
+
+</html>
